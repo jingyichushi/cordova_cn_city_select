@@ -9,41 +9,42 @@
 
 
             this.getCityBy = function(cityId,callback){
+                if(!cityId)
+                    return null;
                 //设置城市
                 ctys = $areaData.cities.filter(function (cty) {
                     return cty.id === cityId
                 });
                 if (ctys.length === 1) {
                     callback(cityId,ctys[0])
-                    //setFilteredCities(cityId);
-                    //updateResult();
                     return ctys[0];
                 }
                 return null
             };
 
             this.getProvinceBy = function(provinceId,callback){
+                if(!provinceId)
+                    return null;
                 //设置省份
                 prvs = $areaData.provinces.filter(function (prv) {
                     return prv.id === provinceId
                 });
                 if (prvs.length === 1) {
                     callback(provinceId,prvs[0])
-                    //updateResult();
                     return prvs[0];
                 }
                 return null;
             };
 
             this.getDistrictBy = function (districtId,callback) {
+                if(!districtId)
+                    return null;
                 //设置区域
                 dsts = $areaData.districts.filter(function (dst) {
                     return dst.id === districtId
                 });
                 if (dsts.length === 1) {
                     callback(districtId,dsts[0]);
-                    //setFilteredDistricts(districtId);
-                    //updateResult();
                     return dsts[0];
                 }
 
