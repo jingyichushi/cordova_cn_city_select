@@ -81,6 +81,10 @@
                 $scope.provinces = $areaData.provinces;
                 $scope.filteredCities = [];
                 $scope.filteredDistricts = [];
+                
+                $scope.province = {text:"--省份--",id:null};
+                $scope.city = {text:"--城市--",id:null};
+                $scope.district = {text:"--区域--",id:null};
 
                 var updateResult = function () {
                     $scope.selectResult = {
