@@ -102,12 +102,12 @@
                 var setFilteredCities = function(cityId){
                     if (cityId) {
                         $scope.filteredCities = $areaData.cities.filter(function (city) {
-							if(city.id === "-1") 
+							if( city.id === "-1") 
 								return true
                             return city.id.slice(0, 2) === cityId.slice(0, 2);
                         });
                     } else {
-                        $scope.filteredCities.length = 0;
+                         $scope.filteredCities = [{text:"--城市--",id:"-1"}];
                     }
                 }
 
@@ -119,7 +119,9 @@
                             return district.id.slice(0, 4) === districtId.slice(0, 4);
                         });
                     else
-                        $scope.filteredDistricts.length = 0;
+                    {
+                        $scope.filteredDistricts = [{text:"--地区--",id:"-1"}];
+                    }
                 }
 
 
