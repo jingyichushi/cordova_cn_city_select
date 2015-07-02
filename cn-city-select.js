@@ -77,6 +77,10 @@
             },
             templateUrl: "/templates/cn-city-select.html",
             link: function ($scope, elem, attrs) {
+                
+                $scope.province = {text:"--省份--",id:null};
+                $scope.city = {text:"--城市--",id:null};
+                $scope.district = {text:"--区域--",id:null};
 
                 $scope.provinces = $areaData.provinces;
                 $scope.filteredCities = [];
