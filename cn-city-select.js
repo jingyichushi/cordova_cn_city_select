@@ -102,7 +102,7 @@
                 var setFilteredCities = function(cityId){
                     if (cityId) {
                         $scope.filteredCities = $areaData.cities.filter(function (city) {
-							if city.id === "-1" 
+							if(city.id === "-1") 
 								return true
                             return city.id.slice(0, 2) === cityId.slice(0, 2);
                         });
@@ -114,7 +114,7 @@
                 var setFilteredDistricts = function(districtId){
                     if(districtId)
                         $scope.filteredDistricts = $areaData.districts.filter(function (district) {
-							if district.id === "-1" 
+							if(district.id === "-1") 
 								return true
                             return district.id.slice(0, 4) === districtId.slice(0, 4);
                         });
