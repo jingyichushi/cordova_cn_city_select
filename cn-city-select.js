@@ -16,7 +16,8 @@
                     return cty.id === cityId
                 });
                 if (ctys.length === 1) {
-                    callback(cityId,ctys[0])
+                    if(angular.isFunction(callback))
+                        callback(cityId,ctys[0])
                     return ctys[0];
                 }
                 return null
@@ -30,7 +31,8 @@
                     return prv.id === provinceId
                 });
                 if (prvs.length === 1) {
-                    callback(provinceId,prvs[0])
+                    if(angular.isFunction(callback))
+                        callback(provinceId,prvs[0])
                     return prvs[0];
                 }
                 return null;
@@ -44,7 +46,8 @@
                     return dst.id === districtId
                 });
                 if (dsts.length === 1) {
-                    callback(districtId,dsts[0]);
+                    if(angular.isFunction(callback))
+                        callback(districtId,dsts[0]);
                     return dsts[0];
                 }
 
