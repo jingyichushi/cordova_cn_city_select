@@ -10,7 +10,7 @@
     angular.module('cnCitySelect', [])
     .service('cn_city_data',[function(){
 
-            addrIdReg = /^[\d]{6,}$/i
+            addrIdReg = /^[\d]{6,}$/i;
 
 
             this.getCityBy = function(cityIdOrText,callback){
@@ -22,10 +22,10 @@
                 });
                 if (ctys.length === 1) {
                     if(angular.isFunction(callback))
-                        callback(cityIdOrText,ctys[0])
+                        callback(cityIdOrText,ctys[0]);
                     return ctys[0];
                 }
-                return null
+                return null;
             };
 
             this.getProvinceBy = function(provinceIdOrText,callback){
@@ -33,11 +33,11 @@
                     return null;
                 //设置省份
                 prvs = $areaData.provinces.filter(function (prv) {
-                    return prv[provinceIdOrText.match(addrIdReg)?'id':'text'] === provinceIdOrText
+                    return prv[provinceIdOrText.match(addrIdReg)?'id':'text'] === provinceIdOrText;
                 });
                 if (prvs.length === 1) {
                     if(angular.isFunction(callback))
-                        callback(provinceIdOrText,prvs[0])
+                        callback(provinceIdOrText,prvs[0]);
                     return prvs[0];
                 }
                 return null;
@@ -48,7 +48,7 @@
                     return null;
                 //设置区域
                 dsts = $areaData.districts.filter(function (dst) {
-                    return dst[districtIdOrText.match(addrIdReg)?'id':'text'] === districtIdOrText
+                    return dst[districtIdOrText.match(addrIdReg)?'id':'text'] === districtIdOrText;
                 });
                 if (dsts.length === 1) {
                     if(angular.isFunction(callback))
@@ -63,7 +63,7 @@
             this.concatResult = function(provinceId,cityId,districtId,splitStr){
                 var resultStr = "";
                 var conn = function(id,result){
-                    resultStr += (resultStr===""?"":splitStr)+result.text
+                    resultStr += (resultStr===""?"":splitStr)+result.text;
                 }
                 this.getProvinceBy(provinceId,conn);
                 this.getCityBy(cityId,conn);
@@ -99,7 +99,7 @@
                         city: $scope.city,
                         district: $scope.district
                     };
-                    $scope.setSelCity({obj: $scope.selectResult})
+                    $scope.setSelCity({obj: $scope.selectResult});
                 };
 
                 angular.forEach(elem.children(), function (selectElem) {
@@ -111,10 +111,10 @@
                         var isAddrId = cityIdOrText.match(addrIdReg)
                         $scope.filteredCities = $areaData.cities.filter(function (city) {
                             if(city.id==='-1' || city.text===selTip)
-                                return false
+                                return false;
                             if(isAddrId)
                                 return city.id.slice(0, 2) === cityIdOrText.slice(0, 2);
-                            return city.text = cityIdOrText
+                            return city.text === cityIdOrText;
 
                         });
 
@@ -141,10 +141,10 @@
                         var isAddrId = districtIdOrText.match(addrIdReg)
                         $scope.filteredDistricts = $areaData.districts.filter(function (district) {
                             if(district.id==='-1' || district.text===selTip)
-                                return false
+                                return false;
                             if(isAddrId)
                                 return district.id.slice(0, 4) === districtIdOrText.slice(0, 4);
-                            return district.text = districtIdOrText
+                            return district.text === districtIdOrText;
                         });
 
                         //if($scope.filteredDistricts.length >= 3){
