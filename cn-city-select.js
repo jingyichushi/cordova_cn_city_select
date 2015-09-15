@@ -209,6 +209,34 @@
                         updateResult();
                     });
                 })
+
+
+                $scope.$on("event:addr:resolved",function(event,data){
+                    if(!data || !data.province)
+                        return;
+
+                    deferExecute().then(function(){
+                        $scope.province = cn_city_data.getProvinceBy(data.province,function(arg){
+                            updateResult();
+                        });
+                    }).then(function(){
+                        if(!data.city)
+                            return;
+                        $scope.city = cn_city_data.getCityBy(data.city,function(arg){
+                            setFilteredCities(arg);
+                            updateResult();
+                        });
+                    }).then(function(){
+                        if(!data.district)
+                            return;
+                        $scope.district = cn_city_data.getDistrictBy(data.district,function(arg){
+                            setFilteredDistricts(arg);
+                            updateResult();
+                        });
+                    })
+                    }
+                )
+
             }
         };
     }]);
